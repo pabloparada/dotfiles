@@ -1,0 +1,32 @@
+add_newline = true
+
+format = """
+ $username\
+$directory\
+$git_branch\
+$cmd_duration\
+$line_break\
+$line_break\
+$character"""
+
+[character]
+success_symbol = " [❯](#b8bb26 bold) "
+error_symbol = " [➜](#fb4934 bold) "
+vicmd_symbol = "[❮](bold green)"
+
+[username]
+style_root = "#fb4934 bold"
+style_user = "#fb4934 bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[directory]
+read_only = " "
+truncation_length = 8
+truncate_to_repo = false
+truncation_symbol = "…/"
+style = "#83a598 bold"
+
+[git_branch]
+style = "#fabd2f bold"
