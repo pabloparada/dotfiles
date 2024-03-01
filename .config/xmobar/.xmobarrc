@@ -1,6 +1,5 @@
 Config
-  { font =
-      "xft:FiraCode Nerd Font:weight=bold:pixelsize=13:antialias=true:hinting=true"
+  { font = "FiraMono Nerd Font Mono Bold 11"
   , additionalFonts = []
   , bgColor = "#282828"
   , fgColor = "#ebdbb2"

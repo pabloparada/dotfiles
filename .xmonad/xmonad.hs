@@ -59,20 +59,22 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
   ( ToggleStruts(..)
   , avoidStruts
-  , docksEventHook
+  , docks
   , manageDocks
   )
+import XMonad.Hooks.WindowSwallowing
 import XMonad.Hooks.ManageHelpers (doCenterFloat, doFullFloat, isFullscreen)
 
 import XMonad.Util.EZConfig (additionalKeys, additionalKeysP)
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
+import XMonad.Util.Hacks (windowedFullscreenFixEventHook, javaHack, trayerAboveXmobarEventHook, trayAbovePanelEventHook, trayerPaddingXmobarEventHook, trayPaddingXmobarEventHook)
 
 import Colors.GruvboxDark
 
 myTerminal = "alacritty"
 
-myEmacs = "emacsclient -c -a 'emacs' "
+myEditor = "fish -c neovide"
 
 myModMask = mod4Mask
 
@@ -128,9 +130,7 @@ myKeys =
   , ("M-<Down>", sendMessage MirrorShrink)
   , ("M-<Up>", sendMessage MirrorExpand)
   , ("M-t", sinkAll)
-  , ("M-q q", spawn myEmacs)
-  , ("M-q w", spawn (myEmacs ++ ("--eval '(dired nil)'")))
-  , ("M-q e", spawn (myEmacs ++ ("--eval '(vterm nil)'")))
+  , ("M-q q", spawn myEditor)
   , ("M-S-q", io (exitWith ExitSuccess))
   , ("M-S-r", spawn "xmonad --recompile; xmonad --restart")
   , ("M-z", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
@@ -238,13 +238,11 @@ myStartupHook = do
 main = do
   xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/.xmobarrc"
   xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.config/xmobar/.xmobarrc"
-  xmonad $
-    ewmh
-      def
+  xmonad $ ewmh $ docks $ def
         { modMask = myModMask
         , manageHook = myManageHook <+> manageDocks
         , terminal = myTerminal
-        , handleEventHook = docksEventHook
+        , handleEventHook    = windowedFullscreenFixEventHook <> swallowEventHook (className =? "Alacritty"  <||> className =? "st-256color" <||> className =? "XTerm") (return True) <> trayerPaddingXmobarEventHook
         , startupHook = myStartupHook
         , layoutHook = myLayoutHook
         , workspaces = myWorkspaces

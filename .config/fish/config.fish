@@ -53,36 +53,36 @@ end
 source ~/.asdf/asdf.fish
 
 set -gx _JAVA_AWT_WM_NONREPARENTING 1
-set -gx PATH "$PATH:$HOME/.local/bin:$HOME/.emacs.d/bin"
-
+set -gx PATH "$PATH:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.cargo/bin"
 set -gx PIP_REQUIRE_VIRTUALENV true
+set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
+set -gx EDITOR "neovide"
+set -gx VISUAL "neovide"
 
 starship init fish | source
 direnv hook fish | source
 
-alias v="nvim"
-alias vim="nvim"
-alias ll="exa -lha --color=always --group-directories-first"
-alias cp="cp -i"
-alias ys="yay -s"
-alias df="df -h"
-alias free="free -m"
-alias rick="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
-alias c="bat"
-alias gs="git switch"
-alias gt="git status"
-alias ga="git add -p"
-alias gc="git commit -v"
-alias gl="git log"
-alias gb="git switch -c"
-alias gp="git push"
-alias gf="git fetch"
-alias xclip="xclip -selection c"
+alias v='neovide'
+alias vim='neovide'
+alias ll='exa -lha --color=always --group-directories-first'
+alias cp='cp -i'
+alias ys='yay -s'
+alias df='df -h'
+alias free='free -m'
+alias rick='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
+alias c='bat'
+alias gs='git switch'
+alias gt='git status'
+alias ga='git add -p'
+alias gc='git commit -v'
+alias gl='git log'
+alias gb='git switch -c'
+alias gp='git push'
+alias gf='git fetch'
+alias xclip='xclip -selection c'
+alias screenshot='maim -s | xclip -selection clipboard -t image/png'
 
-set --export FZF_DEFAULT_OPTS '--cycle --layout=reverse --border="none"' \
-'--height=50% --preview-window="wrap,border-sharp"' \
-'--prompt=" " --marker=" " --pointer="*"' \
-'--bind "j:down,k:up,ctrl-j:preview-down,ctrl-k:preview-up"'
+set --export FZF_DEFAULT_OPTS '--cycle --layout=reverse --border="none" --height=50% --preview-window="wrap,border-sharp" --prompt=" " --marker=" " --pointer="*" --bind "j:down,k:up,ctrl-j:preview-down,ctrl-k:preview-up"'
 
 fzf_configure_bindings --directory=\ct --variables=
 
