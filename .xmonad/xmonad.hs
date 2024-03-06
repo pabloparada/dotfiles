@@ -74,7 +74,7 @@ import Colors.GruvboxDark
 
 myTerminal = "alacritty"
 
-myEditor = "fish -c neovide"
+myEditor = "fish -c nvim"
 
 myModMask = mod4Mask
 
@@ -114,7 +114,7 @@ myKeys =
   , ("M-p s", spawn "dm-websearch")
   , ("M-S-<Return>", spawn "dmenu_run -l 20 -i -p \"Run: \"")
   , ("M-c", kill)
-  , ("<Print>", spawn "scrot -s -e 'mv $f ~/Screenshots/'")
+  , ("M-<F12>", spawn "scrot -s -e 'xclip -selection clipboard -t image/png -i $f'")
   , ("M-<Space>", sendMessage NextLayout)
   , ("M-S-w", killAll)
   , ("M-n", refresh)
@@ -130,7 +130,7 @@ myKeys =
   , ("M-<Down>", sendMessage MirrorShrink)
   , ("M-<Up>", sendMessage MirrorExpand)
   , ("M-t", sinkAll)
-  , ("M-q q", spawn myEditor)
+  , ("M-q q", spawn show(myTerminal) ++ " -e " ++ show(myEditor))
   , ("M-S-q", io (exitWith ExitSuccess))
   , ("M-S-r", spawn "xmonad --recompile; xmonad --restart")
   , ("M-z", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)

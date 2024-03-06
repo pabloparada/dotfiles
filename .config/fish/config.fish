@@ -56,14 +56,14 @@ set -gx _JAVA_AWT_WM_NONREPARENTING 1
 set -gx PATH "$PATH:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.cargo/bin"
 set -gx PIP_REQUIRE_VIRTUALENV true
 set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
-set -gx EDITOR "neovide"
-set -gx VISUAL "neovide"
+set -gx EDITOR "nvim"
+set -gx VISUAL "nvim"
 
 starship init fish | source
 direnv hook fish | source
 
-alias v='neovide'
-alias vim='neovide'
+alias v='nvim'
+alias vim='nvim'
 alias ll='exa -lha --color=always --group-directories-first'
 alias cp='cp -i'
 alias ys='yay -s'
