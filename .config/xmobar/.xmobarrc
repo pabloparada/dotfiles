@@ -26,11 +26,12 @@ Config
       , Run Com "echo" ["\xf0f3"] "bell" 3600
       , Run Com ".local/bin/pacupdate" [] "pacupdate" 3600
       , Run Date "\xf017  %b %d %Y - (%H:%M) " "date" 50
+      , Run Com "bash" ["-c", "if [[ $(dunstctl is-paused) = false ]]; then echo $(dunstctl count waiting); else echo 'None'; fi"] "notif" 20
       , Run Com ".config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
       , Run UnsafeStdinReader
       ]
   , sepChar = "%"
   , alignSep = "}{"
   , template =
-      " <icon=haskell_20.xpm/> <fc=#666666>|</fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#cc241d><fc=#cc241d>%dynnetwork%</fc></box>    <box type=Bottom width=2 mb=2 color=#d3869b><fc=#d3869b>%penguin%  %kernel%</fc></box>    <box type=Bottom width=2 mb=2 color=#b8bb26><fc=#b8bb26><action=`alacritty -e btm`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#458588><fc=#458588><action=`alacritty -e btm`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#d79921><fc=#d79921>%disku%</fc></box>    <box type=Bottom width=2 mb=2 color=#689d6a><fc=#689d6a>%bell%  <action=`alacritty -e yay -Syu`>%pacupdate%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#83a598><fc=#83a598>%date%</fc></box> %trayerpad%"
+      " <icon=haskell_20.xpm/> <fc=#666666>|</fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#cc241d><fc=#cc241d>%dynnetwork%</fc></box>    <box type=Bottom width=2 mb=2 color=#d3869b><fc=#d3869b>%penguin%  %kernel%</fc></box>    <box type=Bottom width=2 mb=2 color=#b8bb26><fc=#b8bb26><action=`alacritty -e btm`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#458588><fc=#458588><action=`alacritty -e btm`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#d79921><fc=#d79921>%disku%</fc></box>    <box type=Bottom width=2 mb=2 color=#689d6a><fc=#689d6a>%bell%  <action=`alacritty -e yay -Syu`>%pacupdate%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#83a598><fc=#83a598>%date%</fc></box>    <box type=Bottom width=2 mb=2 color=#d65d0e><fc=#d65d0e>%bell%  %notif% </fc></box> %trayerpad%"
   }

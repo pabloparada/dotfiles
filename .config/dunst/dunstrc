@@ -1,0 +1,48 @@
+[global]
+	monitor = 0
+	follow = mouse
+	origin = top-right
+	offset = 15x15
+	width = 320
+	height = 220
+	indicate_hidden = true
+	separator_height = 4
+	padding = 10
+	frame_width = 2
+	separator_color = auto
+	sort = true
+	font = Monospace 14
+	line_height = 0
+	format = "<b>%s</b>\n\n%b"
+	alignment = left
+	show_age_threshold = 60
+	ellipsize = middle
+	ignore_newline = false
+	stack_duplicates = false
+	hide_duplicate_count = true
+	show_indicators = false
+	icon_position = left
+	min_icon_size = 16
+	max_icon_size = 96
+	sticky_history = false
+	history_length = 20
+	browser = /usr/bin/firefox
+	always_run_script = true
+	corner_radius = 0
+	progress_bar_corner_radius = 0
+	gap_size = 4
+[urgency_low]
+	background = "#282828"
+	foreground = "#928374"
+	frame_color= "#83a598"
+	timeout = 4
+[urgency_normal]
+	background = "#458588"
+	foreground = "#1d2021"
+	frame_color = "#689d6a"
+	timeout = 10
+[urgency_critical]
+	background = "#1d2021"
+	foreground = "#ebdbb2"
+	frame_color= "#fb4934"
+	timeout = 0
