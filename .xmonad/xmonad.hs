@@ -130,7 +130,7 @@ myKeys =
   , ("M-<Down>", sendMessage MirrorShrink)
   , ("M-<Up>", sendMessage MirrorExpand)
   , ("M-t", sinkAll)
-  , ("M-q q", spawn show(myTerminal) ++ " -e " ++ show(myEditor))
+  , ("M-q q", spawn (myTerminal ++ " -e " ++ myEditor))
   , ("M-S-q", io (exitWith ExitSuccess))
   , ("M-S-r", spawn "xmonad --recompile; xmonad --restart")
   , ("M-z", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
